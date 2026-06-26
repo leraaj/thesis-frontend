@@ -116,8 +116,6 @@ function App() {
     default:
       privateRoutes = [];
   }
-  console.log(user);
-  console.log("role:", user?.role);
   return (
     <BrowserRouter>
       <Routes>

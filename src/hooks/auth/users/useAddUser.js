@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import delay from "../../../utils/display/delay";
 
-const useUpdateUser = () => {
+const useAddUser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setError] = useState(null);
 
-  const updateUser = async (id, formData) => {
+  const addUser = async (formData) => {
     try {
       setIsLoading(true);
       setError(null);
 
       const token = localStorage.getItem("token");
 
-      const response = await axios.put(
-        `http://localhost:5000/api/user/update/${id}`,
+      const response = await axios.post(
+        `http://localhost:5000/api/user/create`,
         formData,
         {
           headers: {
@@ -47,11 +47,11 @@ const useUpdateUser = () => {
   };
 
   return {
-    updateUser,
+    addUser,
     isLoading,
     errors,
     resetErrors,
   };
 };
 
-export default useUpdateUser;
+export default useAddUser;
